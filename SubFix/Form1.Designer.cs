@@ -28,38 +28,41 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnEditRules = new System.Windows.Forms.Button();
             this.btnOpen = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.mnuFile = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuOpen = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuOpenFolder = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuSave = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuSaveAs = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuFix = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEditRules = new System.Windows.Forms.ToolStripMenuItem();
-            this.lstInput = new System.Windows.Forms.ListBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.lstOutput = new System.Windows.Forms.ListBox();
-            this.btnFix = new System.Windows.Forms.Button();
             this.mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuSource = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuFix = new System.Windows.Forms.ToolStripMenuItem();
+            this.lstInput = new System.Windows.Forms.ListBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnFix = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lstOutput = new System.Windows.Forms.ListBox();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.dlgOpen = new System.Windows.Forms.OpenFileDialog();
             this.dlgSave = new System.Windows.Forms.SaveFileDialog();
             this.dlgFolder = new System.Windows.Forms.FolderBrowserDialog();
+            this.toopTip = new System.Windows.Forms.ToolTip(this.components);
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnEditRules
             // 
-            this.btnEditRules.Location = new System.Drawing.Point(198, 206);
+            this.btnEditRules.Location = new System.Drawing.Point(204, 206);
             this.btnEditRules.Name = "btnEditRules";
             this.btnEditRules.Size = new System.Drawing.Size(122, 38);
             this.btnEditRules.TabIndex = 0;
@@ -74,6 +77,7 @@
             this.btnOpen.TabIndex = 1;
             this.btnOpen.Text = "Open File(s)";
             this.btnOpen.UseVisualStyleBackColor = true;
+            this.btnOpen.Click += new System.EventHandler(this.btnOpen_Click);
             // 
             // menuStrip1
             // 
@@ -93,6 +97,7 @@
             // 
             this.mnuFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuOpen,
+            this.mnuOpenFolder,
             this.mnuSave,
             this.mnuSaveAs,
             this.toolStripMenuItem1,
@@ -104,31 +109,45 @@
             // mnuOpen
             // 
             this.mnuOpen.Name = "mnuOpen";
-            this.mnuOpen.Size = new System.Drawing.Size(224, 26);
+            this.mnuOpen.Size = new System.Drawing.Size(174, 26);
             this.mnuOpen.Text = "Open File(s)";
+            this.mnuOpen.Click += new System.EventHandler(this.mnuOpen_Click);
+            // 
+            // mnuOpenFolder
+            // 
+            this.mnuOpenFolder.Name = "mnuOpenFolder";
+            this.mnuOpenFolder.Size = new System.Drawing.Size(174, 26);
+            this.mnuOpenFolder.Text = "Open Folder";
+            this.mnuOpenFolder.Click += new System.EventHandler(this.mnuOpenFolder_Click);
             // 
             // mnuSave
             // 
             this.mnuSave.Name = "mnuSave";
-            this.mnuSave.Size = new System.Drawing.Size(224, 26);
+            this.mnuSave.Size = new System.Drawing.Size(174, 26);
             this.mnuSave.Text = "Save File(s)";
             // 
             // mnuSaveAs
             // 
             this.mnuSaveAs.Name = "mnuSaveAs";
-            this.mnuSaveAs.Size = new System.Drawing.Size(224, 26);
+            this.mnuSaveAs.Size = new System.Drawing.Size(174, 26);
             this.mnuSaveAs.Text = "Save As";
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(221, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(171, 6);
             // 
             // mnuExit
             // 
             this.mnuExit.Name = "mnuExit";
-            this.mnuExit.Size = new System.Drawing.Size(224, 26);
+            this.mnuExit.Size = new System.Drawing.Size(174, 26);
             this.mnuExit.Text = "Exit";
+            // 
+            // mnuFix
+            // 
+            this.mnuFix.Name = "mnuFix";
+            this.mnuFix.Size = new System.Drawing.Size(84, 24);
+            this.mnuFix.Text = "Fix File(s)";
             // 
             // mnuEdit
             // 
@@ -141,8 +160,29 @@
             // mnuEditRules
             // 
             this.mnuEditRules.Name = "mnuEditRules";
-            this.mnuEditRules.Size = new System.Drawing.Size(224, 26);
+            this.mnuEditRules.Size = new System.Drawing.Size(157, 26);
             this.mnuEditRules.Text = "Edit Rules";
+            // 
+            // mnuHelp
+            // 
+            this.mnuHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuAbout,
+            this.mnuSource});
+            this.mnuHelp.Name = "mnuHelp";
+            this.mnuHelp.Size = new System.Drawing.Size(55, 24);
+            this.mnuHelp.Text = "Help";
+            // 
+            // mnuAbout
+            // 
+            this.mnuAbout.Name = "mnuAbout";
+            this.mnuAbout.Size = new System.Drawing.Size(137, 26);
+            this.mnuAbout.Text = "About";
+            // 
+            // mnuSource
+            // 
+            this.mnuSource.Name = "mnuSource";
+            this.mnuSource.Size = new System.Drawing.Size(137, 26);
+            this.mnuSource.Text = "Source";
             // 
             // lstInput
             // 
@@ -152,6 +192,8 @@
             this.lstInput.Name = "lstInput";
             this.lstInput.Size = new System.Drawing.Size(157, 204);
             this.lstInput.TabIndex = 3;
+            this.lstInput.SelectedIndexChanged += new System.EventHandler(this.lstInput_SelectedIndexChanged);
+            this.lstInput.MouseHover += new System.EventHandler(this.lstInput_MouseHover);
             // 
             // groupBox1
             // 
@@ -168,24 +210,17 @@
             this.groupBox1.Size = new System.Drawing.Size(529, 355);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
+            this.groupBox1.MouseHover += new System.EventHandler(this.groupBox1_MouseHover);
             // 
-            // label1
+            // btnFix
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 107);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(86, 20);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Input File(s)";
-            // 
-            // btnSave
-            // 
-            this.btnSave.Location = new System.Drawing.Point(356, 26);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(157, 48);
-            this.btnSave.TabIndex = 5;
-            this.btnSave.Text = "Save File(s)";
-            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnFix.Enabled = false;
+            this.btnFix.Location = new System.Drawing.Point(204, 26);
+            this.btnFix.Name = "btnFix";
+            this.btnFix.Size = new System.Drawing.Size(122, 48);
+            this.btnFix.TabIndex = 8;
+            this.btnFix.Text = "Fix File(s)";
+            this.btnFix.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
@@ -205,45 +240,28 @@
             this.lstOutput.Size = new System.Drawing.Size(157, 204);
             this.lstOutput.TabIndex = 6;
             // 
-            // btnFix
+            // btnSave
             // 
-            this.btnFix.Location = new System.Drawing.Point(198, 26);
-            this.btnFix.Name = "btnFix";
-            this.btnFix.Size = new System.Drawing.Size(122, 48);
-            this.btnFix.TabIndex = 8;
-            this.btnFix.Text = "Fix File(s)";
-            this.btnFix.UseVisualStyleBackColor = true;
+            this.btnSave.Enabled = false;
+            this.btnSave.Location = new System.Drawing.Point(356, 26);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(157, 48);
+            this.btnSave.TabIndex = 5;
+            this.btnSave.Text = "Save File(s)";
+            this.btnSave.UseVisualStyleBackColor = true;
             // 
-            // mnuHelp
+            // label1
             // 
-            this.mnuHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuAbout,
-            this.mnuSource});
-            this.mnuHelp.Name = "mnuHelp";
-            this.mnuHelp.Size = new System.Drawing.Size(55, 24);
-            this.mnuHelp.Text = "Help";
-            // 
-            // mnuAbout
-            // 
-            this.mnuAbout.Name = "mnuAbout";
-            this.mnuAbout.Size = new System.Drawing.Size(224, 26);
-            this.mnuAbout.Text = "About";
-            // 
-            // mnuSource
-            // 
-            this.mnuSource.Name = "mnuSource";
-            this.mnuSource.Size = new System.Drawing.Size(224, 26);
-            this.mnuSource.Text = "Source";
-            // 
-            // mnuFix
-            // 
-            this.mnuFix.Name = "mnuFix";
-            this.mnuFix.Size = new System.Drawing.Size(84, 24);
-            this.mnuFix.Text = "Fix File(s)";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 107);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(86, 20);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Input File(s)";
             // 
             // dlgOpen
             // 
-            this.dlgOpen.Filter = "All (*.*) | *.*";
+            this.dlgOpen.Filter = "SRT Files (*.srt)|*.srt| All (*.*) |*.*";
             this.dlgOpen.Multiselect = true;
             // 
             // frmMain
@@ -259,6 +277,7 @@
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SubFix - Sinhala Subtitle Corrector for Windows 11";
+            this.Load += new System.EventHandler(this.frmMain_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -295,5 +314,7 @@
         private OpenFileDialog dlgOpen;
         private SaveFileDialog dlgSave;
         private FolderBrowserDialog dlgFolder;
+        private ToolStripMenuItem mnuOpenFolder;
+        private ToolTip toopTip;
     }
 }
