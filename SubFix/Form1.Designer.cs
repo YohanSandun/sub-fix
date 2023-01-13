@@ -31,14 +31,14 @@
             this.btnEditRules = new System.Windows.Forms.Button();
             this.btnOpen = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuOpen = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuSave = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuSaveAs = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editRulesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuEditRules = new System.Windows.Forms.ToolStripMenuItem();
             this.lstInput = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -46,9 +46,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.lstOutput = new System.Windows.Forms.ListBox();
             this.btnFix = new System.Windows.Forms.Button();
-            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sourceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuAbout = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuSource = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuFix = new System.Windows.Forms.ToolStripMenuItem();
+            this.dlgOpen = new System.Windows.Forms.OpenFileDialog();
+            this.dlgSave = new System.Windows.Forms.SaveFileDialog();
+            this.dlgFolder = new System.Windows.Forms.FolderBrowserDialog();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -75,69 +79,70 @@
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem,
-            this.editToolStripMenuItem,
-            this.helpToolStripMenuItem});
+            this.mnuFile,
+            this.mnuFix,
+            this.mnuEdit,
+            this.mnuHelp});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(553, 28);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // fileToolStripMenuItem
+            // mnuFile
             // 
-            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.openFileToolStripMenuItem,
-            this.saveFileToolStripMenuItem,
-            this.saveAsToolStripMenuItem,
+            this.mnuFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuOpen,
+            this.mnuSave,
+            this.mnuSaveAs,
             this.toolStripMenuItem1,
-            this.exitToolStripMenuItem});
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
-            this.fileToolStripMenuItem.Text = "File";
+            this.mnuExit});
+            this.mnuFile.Name = "mnuFile";
+            this.mnuFile.Size = new System.Drawing.Size(46, 24);
+            this.mnuFile.Text = "File";
             // 
-            // openFileToolStripMenuItem
+            // mnuOpen
             // 
-            this.openFileToolStripMenuItem.Name = "openFileToolStripMenuItem";
-            this.openFileToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.openFileToolStripMenuItem.Text = "Open File(s)";
+            this.mnuOpen.Name = "mnuOpen";
+            this.mnuOpen.Size = new System.Drawing.Size(224, 26);
+            this.mnuOpen.Text = "Open File(s)";
             // 
-            // saveFileToolStripMenuItem
+            // mnuSave
             // 
-            this.saveFileToolStripMenuItem.Name = "saveFileToolStripMenuItem";
-            this.saveFileToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.saveFileToolStripMenuItem.Text = "Save File(s)";
+            this.mnuSave.Name = "mnuSave";
+            this.mnuSave.Size = new System.Drawing.Size(224, 26);
+            this.mnuSave.Text = "Save File(s)";
             // 
-            // saveAsToolStripMenuItem
+            // mnuSaveAs
             // 
-            this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.saveAsToolStripMenuItem.Text = "Save As";
+            this.mnuSaveAs.Name = "mnuSaveAs";
+            this.mnuSaveAs.Size = new System.Drawing.Size(224, 26);
+            this.mnuSaveAs.Text = "Save As";
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(221, 6);
             // 
-            // exitToolStripMenuItem
+            // mnuExit
             // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.exitToolStripMenuItem.Text = "Exit";
+            this.mnuExit.Name = "mnuExit";
+            this.mnuExit.Size = new System.Drawing.Size(224, 26);
+            this.mnuExit.Text = "Exit";
             // 
-            // editToolStripMenuItem
+            // mnuEdit
             // 
-            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editRulesToolStripMenuItem});
-            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(49, 24);
-            this.editToolStripMenuItem.Text = "Edit";
+            this.mnuEdit.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuEditRules});
+            this.mnuEdit.Name = "mnuEdit";
+            this.mnuEdit.Size = new System.Drawing.Size(49, 24);
+            this.mnuEdit.Text = "Edit";
             // 
-            // editRulesToolStripMenuItem
+            // mnuEditRules
             // 
-            this.editRulesToolStripMenuItem.Name = "editRulesToolStripMenuItem";
-            this.editRulesToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.editRulesToolStripMenuItem.Text = "Edit Rules";
+            this.mnuEditRules.Name = "mnuEditRules";
+            this.mnuEditRules.Size = new System.Drawing.Size(224, 26);
+            this.mnuEditRules.Text = "Edit Rules";
             // 
             // lstInput
             // 
@@ -209,26 +214,37 @@
             this.btnFix.Text = "Fix File(s)";
             this.btnFix.UseVisualStyleBackColor = true;
             // 
-            // helpToolStripMenuItem
+            // mnuHelp
             // 
-            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aboutToolStripMenuItem,
-            this.sourceToolStripMenuItem});
-            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(55, 24);
-            this.helpToolStripMenuItem.Text = "Help";
+            this.mnuHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuAbout,
+            this.mnuSource});
+            this.mnuHelp.Name = "mnuHelp";
+            this.mnuHelp.Size = new System.Drawing.Size(55, 24);
+            this.mnuHelp.Text = "Help";
             // 
-            // aboutToolStripMenuItem
+            // mnuAbout
             // 
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.aboutToolStripMenuItem.Text = "About";
+            this.mnuAbout.Name = "mnuAbout";
+            this.mnuAbout.Size = new System.Drawing.Size(224, 26);
+            this.mnuAbout.Text = "About";
             // 
-            // sourceToolStripMenuItem
+            // mnuSource
             // 
-            this.sourceToolStripMenuItem.Name = "sourceToolStripMenuItem";
-            this.sourceToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.sourceToolStripMenuItem.Text = "Source";
+            this.mnuSource.Name = "mnuSource";
+            this.mnuSource.Size = new System.Drawing.Size(224, 26);
+            this.mnuSource.Text = "Source";
+            // 
+            // mnuFix
+            // 
+            this.mnuFix.Name = "mnuFix";
+            this.mnuFix.Size = new System.Drawing.Size(84, 24);
+            this.mnuFix.Text = "Fix File(s)";
+            // 
+            // dlgOpen
+            // 
+            this.dlgOpen.Filter = "All (*.*) | *.*";
+            this.dlgOpen.Multiselect = true;
             // 
             // frmMain
             // 
@@ -257,14 +273,14 @@
         private Button btnEditRules;
         private Button btnOpen;
         private MenuStrip menuStrip1;
-        private ToolStripMenuItem fileToolStripMenuItem;
-        private ToolStripMenuItem openFileToolStripMenuItem;
-        private ToolStripMenuItem saveFileToolStripMenuItem;
-        private ToolStripMenuItem saveAsToolStripMenuItem;
+        private ToolStripMenuItem mnuFile;
+        private ToolStripMenuItem mnuOpen;
+        private ToolStripMenuItem mnuSave;
+        private ToolStripMenuItem mnuSaveAs;
         private ToolStripSeparator toolStripMenuItem1;
-        private ToolStripMenuItem exitToolStripMenuItem;
-        private ToolStripMenuItem editToolStripMenuItem;
-        private ToolStripMenuItem editRulesToolStripMenuItem;
+        private ToolStripMenuItem mnuExit;
+        private ToolStripMenuItem mnuEdit;
+        private ToolStripMenuItem mnuEditRules;
         private ListBox lstInput;
         private GroupBox groupBox1;
         private Button btnFix;
@@ -272,8 +288,12 @@
         private ListBox lstOutput;
         private Button btnSave;
         private Label label1;
-        private ToolStripMenuItem helpToolStripMenuItem;
-        private ToolStripMenuItem aboutToolStripMenuItem;
-        private ToolStripMenuItem sourceToolStripMenuItem;
+        private ToolStripMenuItem mnuHelp;
+        private ToolStripMenuItem mnuAbout;
+        private ToolStripMenuItem mnuSource;
+        private ToolStripMenuItem mnuFix;
+        private OpenFileDialog dlgOpen;
+        private SaveFileDialog dlgSave;
+        private FolderBrowserDialog dlgFolder;
     }
 }
