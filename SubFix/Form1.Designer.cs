@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.btnEditRules = new System.Windows.Forms.Button();
             this.btnOpen = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.mnuFile = new System.Windows.Forms.ToolStripMenuItem();
@@ -47,6 +46,7 @@
             this.mnuSource = new System.Windows.Forms.ToolStripMenuItem();
             this.lstInput = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.pb = new System.Windows.Forms.ProgressBar();
             this.btnFix = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.lstOutput = new System.Windows.Forms.ListBox();
@@ -59,15 +59,6 @@
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // btnEditRules
-            // 
-            this.btnEditRules.Location = new System.Drawing.Point(204, 206);
-            this.btnEditRules.Name = "btnEditRules";
-            this.btnEditRules.Size = new System.Drawing.Size(122, 38);
-            this.btnEditRules.TabIndex = 0;
-            this.btnEditRules.Text = "Edit Rules";
-            this.btnEditRules.UseVisualStyleBackColor = true;
             // 
             // btnOpen
             // 
@@ -197,20 +188,27 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.pb);
             this.groupBox1.Controls.Add(this.btnFix);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.lstOutput);
             this.groupBox1.Controls.Add(this.btnSave);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.btnEditRules);
             this.groupBox1.Controls.Add(this.btnOpen);
             this.groupBox1.Controls.Add(this.lstInput);
             this.groupBox1.Location = new System.Drawing.Point(12, 41);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(529, 355);
+            this.groupBox1.Size = new System.Drawing.Size(529, 388);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.MouseHover += new System.EventHandler(this.groupBox1_MouseHover);
+            // 
+            // pb
+            // 
+            this.pb.Location = new System.Drawing.Point(16, 353);
+            this.pb.Name = "pb";
+            this.pb.Size = new System.Drawing.Size(497, 29);
+            this.pb.TabIndex = 9;
             // 
             // btnFix
             // 
@@ -221,6 +219,7 @@
             this.btnFix.TabIndex = 8;
             this.btnFix.Text = "Fix File(s)";
             this.btnFix.UseVisualStyleBackColor = true;
+            this.btnFix.Click += new System.EventHandler(this.btnFix_Click);
             // 
             // label2
             // 
@@ -249,6 +248,7 @@
             this.btnSave.TabIndex = 5;
             this.btnSave.Text = "Save File(s)";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // label1
             // 
@@ -268,7 +268,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(553, 408);
+            this.ClientSize = new System.Drawing.Size(553, 441);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -288,8 +288,6 @@
         }
 
         #endregion
-
-        private Button btnEditRules;
         private Button btnOpen;
         private MenuStrip menuStrip1;
         private ToolStripMenuItem mnuFile;
@@ -316,5 +314,6 @@
         private FolderBrowserDialog dlgFolder;
         private ToolStripMenuItem mnuOpenFolder;
         private ToolTip toopTip;
+        private ProgressBar pb;
     }
 }
