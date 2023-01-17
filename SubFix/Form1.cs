@@ -21,6 +21,8 @@ namespace SubFix
                 pWelcome.Visible = false;
                 pInput.Visible = true;
                 pInputFiles.Visible = true;
+                pOptions.Visible = false;
+                pOutput.Visible = false;
 
                 btnBack.Enabled = true;
             }
@@ -30,6 +32,26 @@ namespace SubFix
                 pWelcome.Visible = true;
 
                 btnBack.Enabled = false;
+            }
+            else if (state == State.Options)
+            {
+                pWelcome.Visible = false;
+                pInput.Visible = true;
+                pInputFiles.Visible = false;
+                pOptions.Visible = true;
+                pOutput.Visible = false;
+
+                btnBack.Enabled = true;
+            }
+            else if (state == State.Output)
+            {
+                pWelcome.Visible = false;
+                pInput.Visible = true;
+                pInputFiles.Visible = false;
+                pOptions.Visible = false;
+                pOutput.Visible = true;
+
+                btnBack.Enabled = true;
             }
         }
 
@@ -160,12 +182,30 @@ namespace SubFix
             }
         }
 
+        private bool validateInputs()
+        {
+            bool value = _inputFiles.Count > 0;
+            if (!value)
+                MessageBox.Show("Please add at least one file to continue.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            return value;
+        }
+
+        private bool validateOptions()
+        {
+            bool value = chkFix.Checked | chkRemoveCopyright.Checked;
+            if (!value)
+                MessageBox.Show("Please choose at least one option from the list to continue.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            return value;
+        }
+
         private void btnNext_Click(object sender, EventArgs e)
         {
             if (_currentState == State.Welcome)
-            {
                 switchState(State.Input);
-            }
+            else if (_currentState == State.Input && validateInputs())
+                switchState(State.Options);
+            else if (_currentState == State.Options && validateOptions())
+                switchState(State.Output);
         }
 
         private void btnAddFolder_Click(object sender, EventArgs e)
@@ -187,9 +227,16 @@ namespace SubFix
         private void btnBack_Click(object sender, EventArgs e)
         {
             if (_currentState == State.Input)
-            {
                 switchState(State.Welcome);
-            }
+            else if (_currentState == State.Options)
+                switchState(State.Input);
+            else if (_currentState == State.Output)
+                switchState(State.Options);
+        }
+
+        private void rbOverwrite_CheckedChanged(object sender, EventArgs e)
+        {
+            grpOutput.Enabled = rbChoose.Checked;
         }
     }
 }
