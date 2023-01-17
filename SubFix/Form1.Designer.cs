@@ -42,8 +42,18 @@
             this.btnNext = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
             this.pInput = new System.Windows.Forms.Panel();
+            this.pInputFiles = new System.Windows.Forms.Panel();
+            this.btnRemoveAll = new System.Windows.Forms.Button();
+            this.btnAddFiles = new System.Windows.Forms.Button();
+            this.btnAddFolder = new System.Windows.Forms.Button();
+            this.lstInput = new System.Windows.Forms.ListBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pWelcome.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.pInput.SuspendLayout();
+            this.pInputFiles.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // dlgOpen
@@ -120,23 +130,100 @@
             this.btnNext.TabIndex = 7;
             this.btnNext.Text = "&Next";
             this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
             // btnBack
             // 
+            this.btnBack.Enabled = false;
             this.btnBack.Location = new System.Drawing.Point(315, 450);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(94, 29);
             this.btnBack.TabIndex = 8;
             this.btnBack.Text = "&Back";
             this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // pInput
             // 
+            this.pInput.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.pInput.Controls.Add(this.pInputFiles);
+            this.pInput.Controls.Add(this.pictureBox2);
             this.pInput.Dock = System.Windows.Forms.DockStyle.Top;
             this.pInput.Location = new System.Drawing.Point(0, 0);
             this.pInput.Name = "pInput";
             this.pInput.Size = new System.Drawing.Size(666, 435);
             this.pInput.TabIndex = 9;
+            // 
+            // pInputFiles
+            // 
+            this.pInputFiles.Controls.Add(this.btnRemoveAll);
+            this.pInputFiles.Controls.Add(this.btnAddFiles);
+            this.pInputFiles.Controls.Add(this.btnAddFolder);
+            this.pInputFiles.Controls.Add(this.lstInput);
+            this.pInputFiles.Controls.Add(this.label1);
+            this.pInputFiles.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pInputFiles.Location = new System.Drawing.Point(0, 90);
+            this.pInputFiles.Name = "pInputFiles";
+            this.pInputFiles.Size = new System.Drawing.Size(666, 345);
+            this.pInputFiles.TabIndex = 1;
+            // 
+            // btnRemoveAll
+            // 
+            this.btnRemoveAll.Location = new System.Drawing.Point(530, 286);
+            this.btnRemoveAll.Name = "btnRemoveAll";
+            this.btnRemoveAll.Size = new System.Drawing.Size(109, 29);
+            this.btnRemoveAll.TabIndex = 9;
+            this.btnRemoveAll.Text = "Remove All";
+            this.btnRemoveAll.UseVisualStyleBackColor = true;
+            this.btnRemoveAll.Click += new System.EventHandler(this.btnRemoveAll_Click);
+            // 
+            // btnAddFiles
+            // 
+            this.btnAddFiles.Location = new System.Drawing.Point(530, 232);
+            this.btnAddFiles.Name = "btnAddFiles";
+            this.btnAddFiles.Size = new System.Drawing.Size(109, 29);
+            this.btnAddFiles.TabIndex = 8;
+            this.btnAddFiles.Text = "Add Files";
+            this.btnAddFiles.UseVisualStyleBackColor = true;
+            this.btnAddFiles.Click += new System.EventHandler(this.btnAddFiles_Click);
+            // 
+            // btnAddFolder
+            // 
+            this.btnAddFolder.Location = new System.Drawing.Point(530, 193);
+            this.btnAddFolder.Name = "btnAddFolder";
+            this.btnAddFolder.Size = new System.Drawing.Size(109, 29);
+            this.btnAddFolder.TabIndex = 7;
+            this.btnAddFolder.Text = "Add Folder";
+            this.btnAddFolder.UseVisualStyleBackColor = true;
+            this.btnAddFolder.Click += new System.EventHandler(this.btnAddFolder_Click);
+            // 
+            // lstInput
+            // 
+            this.lstInput.FormattingEnabled = true;
+            this.lstInput.ItemHeight = 20;
+            this.lstInput.Location = new System.Drawing.Point(23, 51);
+            this.lstInput.Name = "lstInput";
+            this.lstInput.Size = new System.Drawing.Size(486, 264);
+            this.lstInput.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(19, 23);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(76, 20);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Input Files";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pictureBox2.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(666, 90);
+            this.pictureBox2.TabIndex = 0;
+            this.pictureBox2.TabStop = false;
             // 
             // frmMain
             // 
@@ -147,8 +234,8 @@
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnNext);
             this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.pWelcome);
             this.Controls.Add(this.pInput);
+            this.Controls.Add(this.pWelcome);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "frmMain";
@@ -158,6 +245,10 @@
             this.pWelcome.ResumeLayout(false);
             this.pWelcome.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.pInput.ResumeLayout(false);
+            this.pInputFiles.ResumeLayout(false);
+            this.pInputFiles.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -176,5 +267,12 @@
         private Button btnNext;
         private Button btnBack;
         private Panel pInput;
+        private Panel pInputFiles;
+        private PictureBox pictureBox2;
+        private Button btnRemoveAll;
+        private Button btnAddFiles;
+        private Button btnAddFolder;
+        private ListBox lstInput;
+        private Label label1;
     }
 }

@@ -2,15 +2,43 @@ namespace SubFix
 {
     public partial class frmMain : Form
     {
+
+        public enum State
+        {
+            Welcome, Input, Options, Output, Progress, Finished
+        }
+
         private List<InputFile> _inputFiles = new List<InputFile>();
         private List<OutputFile> _outputFiles = new List<OutputFile>();
         private RulesContext _rulesContext = new RulesContext();
+        private State _currentState = State.Welcome;
+
+        private void switchState(State state)
+        {
+            _currentState = state;
+            if (state == State.Input)
+            {
+                pWelcome.Visible = false;
+                pInput.Visible = true;
+                pInputFiles.Visible = true;
+
+                btnBack.Enabled = true;
+            }
+            else if (state == State.Welcome)
+            {
+                pInput.Visible = false;
+                pWelcome.Visible = true;
+
+                btnBack.Enabled = false;
+            }
+        }
 
         public frmMain()
         {
             InitializeComponent();
 
             _rulesContext.AddRule(new ReplaceRule());
+            switchState(State.Welcome);
         }
 
         private void btnOpen_Click(object sender, EventArgs e)
@@ -55,14 +83,11 @@ namespace SubFix
 
         private void refreshInputFilesList()
         {
-            /*
             lstInput.Items.Clear();
             foreach (InputFile file in _inputFiles)
             {
                 lstInput.Items.Add(file.Name);
             }
-            btnFix.Enabled = true;
-            */
         }
 
         private void groupBox1_MouseHover(object sender, EventArgs e)
@@ -132,6 +157,38 @@ namespace SubFix
                 MessageBox.Show("Successfully saved file(s)", "Done", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 pb.Value = 0;
                 */
+            }
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            if (_currentState == State.Welcome)
+            {
+                switchState(State.Input);
+            }
+        }
+
+        private void btnAddFolder_Click(object sender, EventArgs e)
+        {
+            openFolder();
+        }
+
+        private void btnRemoveAll_Click(object sender, EventArgs e)
+        {
+            _inputFiles.Clear();
+            refreshInputFilesList();
+        }
+
+        private void btnAddFiles_Click(object sender, EventArgs e)
+        {
+            openFiles();
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            if (_currentState == State.Input)
+            {
+                switchState(State.Welcome);
             }
         }
     }
