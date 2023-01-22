@@ -1,14 +1,15 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Text;
+using System.Text.RegularExpressions;
 
 namespace SubFix
 {
     class SRTParser
     {
         // Parse srt file using regex.
-        public static SRTSegment[] Parse(string file)
+        public static SRTFile Parse(string file)
         {
             List<SRTSegment> segments = new List<SRTSegment>();
-            Regex regex = new Regex(@"(?<number>\d+)\r\n(?<start>\S+)\s-->\s(?<end>\S+)\r\n(?<text>(.|[\r\n])+?)\r\n\r\n");
+            Regex regex = new Regex(@"(?<number>\d+)\n(?<start>\S+)\s-->\s(?<end>\S+)\n(?<text>(.|[\n])+?)\n\n");
             MatchCollection match = regex.Matches(File.ReadAllText(file));
             foreach (Match m in match)
             {
@@ -17,27 +18,39 @@ namespace SubFix
                     Number = m.Groups["number"].Value,
                     StartTime = m.Groups["start"].Value,
                     EndTime = m.Groups["end"].Value,
-                    TextLines = Regex.Split(Regex.Replace(Regex.Replace(m.Groups["text"].Value, "{.*?}", String.Empty), "<.*?>", String.Empty), "\r\n"),
-                    IsItalic = m.Groups["text"].Value.ToString().ToLower().StartsWith("<i>"),
-                    IsUnderline = m.Groups["text"].Value.ToString().ToLower().StartsWith("<u>")
+                    TextContent = m.Groups["text"].Value//Regex.Replace(Regex.Replace(m.Groups["text"].Value, "{.*?}", String.Empty), "<.*?>", String.Empty),
                 });
             }
-            return segments.ToArray();
+            return new SRTFile(segments);
         }
     }
 
     public class SRTSegment
     {
-        public bool IsItalic { get; set; }
-
-        public bool IsUnderline { get; set; }
-
         public string Number { get; set; }
 
         public string StartTime { get; set; }
 
         public string EndTime { get; set; }
 
-        public string[] TextLines { get; set; }
+        public string TextContent { get; set; }
+    }
+
+    public class SRTFile
+    {
+        public List<SRTSegment> Segments { get; set; }
+
+        public SRTFile(List<SRTSegment> segments)
+        {
+            Segments = segments;
+        }
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (SRTSegment segment in Segments)
+                sb.Append(segment.TextContent);
+            return sb.ToString();
+        }
     }
 }

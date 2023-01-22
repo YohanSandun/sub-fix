@@ -10,14 +10,13 @@
             _rules.Add(rule);
         }
 
-        public string ApplyRules(string text)
+        public SRTFile ApplyRules(SRTFile file)
         {
             for (int i = 0; i < _rules.Count; i++)
             {
-                text = _rules[i].Apply(text);
+                file = _rules[i].Apply(file);
             }
-
-            return text;
+            return file;
         }
 
     }

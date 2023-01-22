@@ -9,7 +9,7 @@ namespace SubFix
         }
 
         private List<InputFile> _inputFiles = new List<InputFile>();
-        private List<OutputFile> _outputFiles = new List<OutputFile>();
+        private bool pendingCancel = false;
         private RulesContext _rulesContext = new RulesContext();
         private State _currentState = State.Welcome;
 
@@ -23,7 +23,8 @@ namespace SubFix
                 pInputFiles.Visible = true;
                 pOptions.Visible = false;
                 pOutput.Visible = false;
-
+                pProgress.Visible = false;
+                btnNext.Text = "&Next";
                 btnBack.Enabled = true;
             }
             else if (state == State.Welcome)
@@ -32,26 +33,43 @@ namespace SubFix
                 pWelcome.Visible = true;
 
                 btnBack.Enabled = false;
+                btnNext.Text = "&Next";
             }
             else if (state == State.Options)
             {
                 pWelcome.Visible = false;
                 pInput.Visible = true;
+                pProgress.Visible = false;
                 pInputFiles.Visible = false;
                 pOptions.Visible = true;
                 pOutput.Visible = false;
 
                 btnBack.Enabled = true;
+                btnNext.Text = "&Next";
             }
             else if (state == State.Output)
             {
                 pWelcome.Visible = false;
+                pProgress.Visible = false;
                 pInput.Visible = true;
                 pInputFiles.Visible = false;
                 pOptions.Visible = false;
                 pOutput.Visible = true;
 
                 btnBack.Enabled = true;
+                btnNext.Text = "&Finish";
+            }
+            else if (state == State.Progress)
+            {
+                pWelcome.Visible = false;
+                pProgress.Visible = true;
+                pInput.Visible = true;
+                pInputFiles.Visible = false;
+                pOptions.Visible = false;
+                pOutput.Visible = false;
+
+                btnBack.Enabled = false;
+                btnNext.Enabled = false;
             }
         }
 
@@ -59,7 +77,7 @@ namespace SubFix
         {
             InitializeComponent();
 
-            _rulesContext.AddRule(new ReplaceRule());
+            _rulesContext.AddRule(new FontAddRule());
             switchState(State.Welcome);
         }
 
@@ -133,7 +151,7 @@ namespace SubFix
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-          
+
         }
 
         private void lstInput_SelectedIndexChanged(object sender, EventArgs e)
@@ -144,21 +162,7 @@ namespace SubFix
         private void btnFix_Click(object sender, EventArgs e)
         {
             /*
-            pb.Value = 0;
-            pb.Maximum = _inputFiles.Count - 1;
-            for (int i = 0; i < _inputFiles.Count; i++)
-            {
-                _outputFiles.Add(
-                    new OutputFile(
-                        _inputFiles[i].FullName, _inputFiles[i].Name, 
-                        _rulesContext.ApplyRules(File.ReadAllText(_inputFiles[i].FullName)))
-                    );
-                pb.Value = i;
-            }
-            pb.Value = pb.Maximum;
-            MessageBox.Show("Successfully fixed file(s)", "Done", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-            btnSave.Enabled = true;
-            pb.Value = 0;
+            
             */
         }
 
@@ -198,6 +202,14 @@ namespace SubFix
             return value;
         }
 
+        private bool validateOutput()
+        {
+            if (rbOverwrite.Checked)
+                return MessageBox.Show("Are you sure want to replace the original file(s)?", "Save File(s)", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes;
+
+            return true;
+        }
+
         private void btnNext_Click(object sender, EventArgs e)
         {
             if (_currentState == State.Welcome)
@@ -206,6 +218,49 @@ namespace SubFix
                 switchState(State.Options);
             else if (_currentState == State.Options && validateOptions())
                 switchState(State.Output);
+            else if (_currentState == State.Output && validateOutput())
+            {
+                switchState(State.Progress);
+                fixSubtitles();
+                //SRTFile f = SRTParser.Parse(@"E:\TVSeries\1899\1899 (2022) S01E01 Sinhala Subtitles\1899.S01E01.1080p.NF.WEB-DL.DUAL.DDP5.1.Atmos.H.264-SMURF.Cineru.srt");
+                //MessageBox.Show(f.Segments.Count.ToString());
+            }
+        }
+
+        private void fixSubtitles()
+        {
+            pb.Value = 0;
+            pb.Maximum = _inputFiles.Count - 1;
+            for (int i = 0; i < _inputFiles.Count; i++)
+            {
+                if (pendingCancel)
+                {
+                    if (MessageBox.Show("Are you sure want to cancel?\n\nAlready " + (i+1) + " files are affected and they cannot be recovered!", "Cancel", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                        Application.Exit();
+                    else
+                        pendingCancel = false;
+                }
+
+                lstLog.Items.Add("Fixing... : " + _inputFiles[i].Name);
+                OutputFile ofile = new OutputFile(
+                        _inputFiles[i].FullName, _inputFiles[i].Name,
+                        _rulesContext.ApplyRules(SRTParser.Parse(_inputFiles[i].FullName)).ToString());
+                lstLog.Items.Add("Fixed : " + _inputFiles[i].Name);
+                lstLog.Items.Add("Saving... : " + _inputFiles[i].Name);
+
+                if (rbOverwrite.Checked)
+                {
+                    File.Delete(ofile.FullName);
+                    File.WriteAllText(ofile.FullName, ofile.Content);
+                }
+                lstLog.Items.Add("Saved : " + ofile.FullName);
+
+                pb.Value = i;
+                Application.DoEvents();
+            }
+            pb.Value = pb.Maximum;
+            MessageBox.Show("Successfully fixed file(s)", "Done", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            pb.Value = 0;
         }
 
         private void btnAddFolder_Click(object sender, EventArgs e)
@@ -237,6 +292,22 @@ namespace SubFix
         private void rbOverwrite_CheckedChanged(object sender, EventArgs e)
         {
             grpOutput.Enabled = rbChoose.Checked;
+        }
+
+        private void btnBrowse_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            if (_currentState == State.Progress)
+                pendingCancel = true;
+            else
+            {
+                if (MessageBox.Show("Are you sure want to cancel?", "Cancel", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                    Application.Exit();
+            }
         }
     }
 }

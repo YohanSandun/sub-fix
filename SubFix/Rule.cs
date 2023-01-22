@@ -2,6 +2,6 @@
 {
     internal interface Rule
     {
-        string Apply(string text);
+        SRTFile Apply(SRTFile file);
     }
 }
