@@ -43,6 +43,19 @@
             this.btnBack = new System.Windows.Forms.Button();
             this.pInput = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pProgress = new System.Windows.Forms.Panel();
+            this.horizontalLine5 = new SubFix.HorizontalLine();
+            this.lstLog = new System.Windows.Forms.ListBox();
+            this.pb = new System.Windows.Forms.ProgressBar();
+            this.label6 = new System.Windows.Forms.Label();
+            this.pOutput = new System.Windows.Forms.Panel();
+            this.horizontalLine4 = new SubFix.HorizontalLine();
+            this.grpOutput = new System.Windows.Forms.GroupBox();
+            this.btnBrowse = new System.Windows.Forms.Button();
+            this.txtOutput = new System.Windows.Forms.TextBox();
+            this.rbChoose = new System.Windows.Forms.RadioButton();
+            this.rbOverwrite = new System.Windows.Forms.RadioButton();
+            this.label5 = new System.Windows.Forms.Label();
             this.pOptions = new System.Windows.Forms.Panel();
             this.grpFont = new System.Windows.Forms.GroupBox();
             this.lblInstallFont = new System.Windows.Forms.LinkLabel();
@@ -59,28 +72,16 @@
             this.btnAddFolder = new System.Windows.Forms.Button();
             this.lstInput = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.pProgress = new System.Windows.Forms.Panel();
-            this.lstLog = new System.Windows.Forms.ListBox();
-            this.pb = new System.Windows.Forms.ProgressBar();
-            this.label6 = new System.Windows.Forms.Label();
-            this.pOutput = new System.Windows.Forms.Panel();
-            this.horizontalLine4 = new SubFix.HorizontalLine();
-            this.grpOutput = new System.Windows.Forms.GroupBox();
-            this.btnBrowse = new System.Windows.Forms.Button();
-            this.txtOutput = new System.Windows.Forms.TextBox();
-            this.rbChoose = new System.Windows.Forms.RadioButton();
-            this.rbOverwrite = new System.Windows.Forms.RadioButton();
-            this.label5 = new System.Windows.Forms.Label();
             this.pWelcome.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pInput.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            this.pOptions.SuspendLayout();
-            this.grpFont.SuspendLayout();
-            this.pInputFiles.SuspendLayout();
             this.pProgress.SuspendLayout();
             this.pOutput.SuspendLayout();
             this.grpOutput.SuspendLayout();
+            this.pOptions.SuspendLayout();
+            this.grpFont.SuspendLayout();
+            this.pInputFiles.SuspendLayout();
             this.SuspendLayout();
             // 
             // dlgOpen
@@ -133,6 +134,7 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pictureBox1.Image = global::SubFix.Properties.Resources.cover1;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(217, 435);
@@ -175,10 +177,10 @@
             // 
             this.pInput.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.pInput.Controls.Add(this.pictureBox2);
-            this.pInput.Controls.Add(this.pOptions);
-            this.pInput.Controls.Add(this.pInputFiles);
             this.pInput.Controls.Add(this.pProgress);
             this.pInput.Controls.Add(this.pOutput);
+            this.pInput.Controls.Add(this.pOptions);
+            this.pInput.Controls.Add(this.pInputFiles);
             this.pInput.Dock = System.Windows.Forms.DockStyle.Top;
             this.pInput.Location = new System.Drawing.Point(0, 0);
             this.pInput.Name = "pInput";
@@ -189,11 +191,144 @@
             // 
             this.pictureBox2.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pictureBox2.Image = global::SubFix.Properties.Resources.cover2;
             this.pictureBox2.Location = new System.Drawing.Point(0, 0);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(666, 90);
+            this.pictureBox2.Size = new System.Drawing.Size(666, 98);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
+            // 
+            // pProgress
+            // 
+            this.pProgress.Controls.Add(this.horizontalLine5);
+            this.pProgress.Controls.Add(this.lstLog);
+            this.pProgress.Controls.Add(this.pb);
+            this.pProgress.Controls.Add(this.label6);
+            this.pProgress.Location = new System.Drawing.Point(0, 90);
+            this.pProgress.Name = "pProgress";
+            this.pProgress.Size = new System.Drawing.Size(666, 345);
+            this.pProgress.TabIndex = 10;
+            this.pProgress.Visible = false;
+            // 
+            // horizontalLine5
+            // 
+            this.horizontalLine5.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.horizontalLine5.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.horizontalLine5.Location = new System.Drawing.Point(0, 343);
+            this.horizontalLine5.Name = "horizontalLine5";
+            this.horizontalLine5.Size = new System.Drawing.Size(666, 2);
+            this.horizontalLine5.TabIndex = 3;
+            this.horizontalLine5.Text = "horizontalLine5";
+            // 
+            // lstLog
+            // 
+            this.lstLog.FormattingEnabled = true;
+            this.lstLog.ItemHeight = 20;
+            this.lstLog.Location = new System.Drawing.Point(23, 96);
+            this.lstLog.Name = "lstLog";
+            this.lstLog.Size = new System.Drawing.Size(620, 224);
+            this.lstLog.TabIndex = 2;
+            // 
+            // pb
+            // 
+            this.pb.Location = new System.Drawing.Point(23, 51);
+            this.pb.Name = "pb";
+            this.pb.Size = new System.Drawing.Size(620, 29);
+            this.pb.TabIndex = 1;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(19, 23);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(295, 20);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "Hang on while we are fixing your subtitles...";
+            // 
+            // pOutput
+            // 
+            this.pOutput.Controls.Add(this.horizontalLine4);
+            this.pOutput.Controls.Add(this.grpOutput);
+            this.pOutput.Controls.Add(this.rbChoose);
+            this.pOutput.Controls.Add(this.rbOverwrite);
+            this.pOutput.Controls.Add(this.label5);
+            this.pOutput.Location = new System.Drawing.Point(0, 90);
+            this.pOutput.Name = "pOutput";
+            this.pOutput.Size = new System.Drawing.Size(666, 345);
+            this.pOutput.TabIndex = 11;
+            // 
+            // horizontalLine4
+            // 
+            this.horizontalLine4.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.horizontalLine4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.horizontalLine4.Location = new System.Drawing.Point(0, 343);
+            this.horizontalLine4.Name = "horizontalLine4";
+            this.horizontalLine4.Size = new System.Drawing.Size(666, 2);
+            this.horizontalLine4.TabIndex = 4;
+            this.horizontalLine4.Text = "horizontalLine4";
+            // 
+            // grpOutput
+            // 
+            this.grpOutput.Controls.Add(this.btnBrowse);
+            this.grpOutput.Controls.Add(this.txtOutput);
+            this.grpOutput.Enabled = false;
+            this.grpOutput.Location = new System.Drawing.Point(56, 160);
+            this.grpOutput.Name = "grpOutput";
+            this.grpOutput.Size = new System.Drawing.Size(547, 134);
+            this.grpOutput.TabIndex = 3;
+            this.grpOutput.TabStop = false;
+            this.grpOutput.Text = "Output";
+            // 
+            // btnBrowse
+            // 
+            this.btnBrowse.Location = new System.Drawing.Point(428, 83);
+            this.btnBrowse.Name = "btnBrowse";
+            this.btnBrowse.Size = new System.Drawing.Size(94, 29);
+            this.btnBrowse.TabIndex = 8;
+            this.btnBrowse.Text = "Browse...";
+            this.btnBrowse.UseVisualStyleBackColor = true;
+            this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
+            // 
+            // txtOutput
+            // 
+            this.txtOutput.Location = new System.Drawing.Point(23, 44);
+            this.txtOutput.Name = "txtOutput";
+            this.txtOutput.ReadOnly = true;
+            this.txtOutput.Size = new System.Drawing.Size(499, 27);
+            this.txtOutput.TabIndex = 0;
+            // 
+            // rbChoose
+            // 
+            this.rbChoose.AutoSize = true;
+            this.rbChoose.Location = new System.Drawing.Point(56, 104);
+            this.rbChoose.Name = "rbChoose";
+            this.rbChoose.Size = new System.Drawing.Size(185, 24);
+            this.rbChoose.TabIndex = 2;
+            this.rbChoose.Text = "Choose output location";
+            this.rbChoose.UseVisualStyleBackColor = true;
+            // 
+            // rbOverwrite
+            // 
+            this.rbOverwrite.AutoSize = true;
+            this.rbOverwrite.Checked = true;
+            this.rbOverwrite.Location = new System.Drawing.Point(56, 66);
+            this.rbOverwrite.Name = "rbOverwrite";
+            this.rbOverwrite.Size = new System.Drawing.Size(125, 24);
+            this.rbOverwrite.TabIndex = 1;
+            this.rbOverwrite.TabStop = true;
+            this.rbOverwrite.Text = "Overwrite files";
+            this.rbOverwrite.UseVisualStyleBackColor = true;
+            this.rbOverwrite.CheckedChanged += new System.EventHandler(this.rbOverwrite_CheckedChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(19, 23);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(305, 20);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Please choose a location to save output files.";
             // 
             // pOptions
             // 
@@ -365,126 +500,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Input Files";
             // 
-            // pProgress
-            // 
-            this.pProgress.Controls.Add(this.lstLog);
-            this.pProgress.Controls.Add(this.pb);
-            this.pProgress.Controls.Add(this.label6);
-            this.pProgress.Location = new System.Drawing.Point(0, 90);
-            this.pProgress.Name = "pProgress";
-            this.pProgress.Size = new System.Drawing.Size(666, 345);
-            this.pProgress.TabIndex = 10;
-            this.pProgress.Visible = false;
-            // 
-            // lstLog
-            // 
-            this.lstLog.FormattingEnabled = true;
-            this.lstLog.ItemHeight = 20;
-            this.lstLog.Location = new System.Drawing.Point(23, 96);
-            this.lstLog.Name = "lstLog";
-            this.lstLog.Size = new System.Drawing.Size(620, 224);
-            this.lstLog.TabIndex = 2;
-            // 
-            // pb
-            // 
-            this.pb.Location = new System.Drawing.Point(23, 51);
-            this.pb.Name = "pb";
-            this.pb.Size = new System.Drawing.Size(620, 29);
-            this.pb.TabIndex = 1;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(19, 23);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(295, 20);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "Hang on while we are fixing your subtitles...";
-            // 
-            // pOutput
-            // 
-            this.pOutput.Controls.Add(this.horizontalLine4);
-            this.pOutput.Controls.Add(this.grpOutput);
-            this.pOutput.Controls.Add(this.rbChoose);
-            this.pOutput.Controls.Add(this.rbOverwrite);
-            this.pOutput.Controls.Add(this.label5);
-            this.pOutput.Location = new System.Drawing.Point(0, 90);
-            this.pOutput.Name = "pOutput";
-            this.pOutput.Size = new System.Drawing.Size(666, 345);
-            this.pOutput.TabIndex = 11;
-            // 
-            // horizontalLine4
-            // 
-            this.horizontalLine4.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.horizontalLine4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.horizontalLine4.Location = new System.Drawing.Point(0, 343);
-            this.horizontalLine4.Name = "horizontalLine4";
-            this.horizontalLine4.Size = new System.Drawing.Size(666, 2);
-            this.horizontalLine4.TabIndex = 4;
-            this.horizontalLine4.Text = "horizontalLine4";
-            // 
-            // grpOutput
-            // 
-            this.grpOutput.Controls.Add(this.btnBrowse);
-            this.grpOutput.Controls.Add(this.txtOutput);
-            this.grpOutput.Enabled = false;
-            this.grpOutput.Location = new System.Drawing.Point(56, 160);
-            this.grpOutput.Name = "grpOutput";
-            this.grpOutput.Size = new System.Drawing.Size(547, 134);
-            this.grpOutput.TabIndex = 3;
-            this.grpOutput.TabStop = false;
-            this.grpOutput.Text = "Output";
-            // 
-            // btnBrowse
-            // 
-            this.btnBrowse.Location = new System.Drawing.Point(428, 83);
-            this.btnBrowse.Name = "btnBrowse";
-            this.btnBrowse.Size = new System.Drawing.Size(94, 29);
-            this.btnBrowse.TabIndex = 8;
-            this.btnBrowse.Text = "Browse...";
-            this.btnBrowse.UseVisualStyleBackColor = true;
-            this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
-            // 
-            // txtOutput
-            // 
-            this.txtOutput.Location = new System.Drawing.Point(23, 44);
-            this.txtOutput.Name = "txtOutput";
-            this.txtOutput.ReadOnly = true;
-            this.txtOutput.Size = new System.Drawing.Size(499, 27);
-            this.txtOutput.TabIndex = 0;
-            // 
-            // rbChoose
-            // 
-            this.rbChoose.AutoSize = true;
-            this.rbChoose.Location = new System.Drawing.Point(56, 104);
-            this.rbChoose.Name = "rbChoose";
-            this.rbChoose.Size = new System.Drawing.Size(185, 24);
-            this.rbChoose.TabIndex = 2;
-            this.rbChoose.Text = "Choose output location";
-            this.rbChoose.UseVisualStyleBackColor = true;
-            // 
-            // rbOverwrite
-            // 
-            this.rbOverwrite.AutoSize = true;
-            this.rbOverwrite.Checked = true;
-            this.rbOverwrite.Location = new System.Drawing.Point(56, 66);
-            this.rbOverwrite.Name = "rbOverwrite";
-            this.rbOverwrite.Size = new System.Drawing.Size(125, 24);
-            this.rbOverwrite.TabIndex = 1;
-            this.rbOverwrite.TabStop = true;
-            this.rbOverwrite.Text = "Overwrite files";
-            this.rbOverwrite.UseVisualStyleBackColor = true;
-            this.rbOverwrite.CheckedChanged += new System.EventHandler(this.rbOverwrite_CheckedChanged);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(19, 23);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(305, 20);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Please choose a location to save output files.";
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -506,19 +521,20 @@
             this.pWelcome.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pInput.ResumeLayout(false);
+            this.pInput.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            this.pOptions.ResumeLayout(false);
-            this.pOptions.PerformLayout();
-            this.grpFont.ResumeLayout(false);
-            this.grpFont.PerformLayout();
-            this.pInputFiles.ResumeLayout(false);
-            this.pInputFiles.PerformLayout();
             this.pProgress.ResumeLayout(false);
             this.pProgress.PerformLayout();
             this.pOutput.ResumeLayout(false);
             this.pOutput.PerformLayout();
             this.grpOutput.ResumeLayout(false);
             this.grpOutput.PerformLayout();
+            this.pOptions.ResumeLayout(false);
+            this.pOptions.PerformLayout();
+            this.grpFont.ResumeLayout(false);
+            this.grpFont.PerformLayout();
+            this.pInputFiles.ResumeLayout(false);
+            this.pInputFiles.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -566,5 +582,6 @@
         private LinkLabel lblInstallFont;
         private RadioButton rbIskoolaPota;
         private RadioButton rbBindumathi;
+        private HorizontalLine horizontalLine5;
     }
 }

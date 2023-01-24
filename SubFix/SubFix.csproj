@@ -7,6 +7,11 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
     <BaseOutputPath>bin\</BaseOutputPath>
+    <Company>YSK Soft</Company>
+    <Authors>Yohan Sandun</Authors>
+    <Description>A tool for fixing unicode issues in .srt files on Windows 11</Description>
+    <Copyright>YSK Soft</Copyright>
+    <PackageProjectUrl>https://github.com/YohanSandun/sub-fix</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>
@@ -18,6 +23,22 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
     <Exec Command="xcopy &quot;$(TargetDir)*&quot; &quot;$(SolutionDir)bin\$(Configuration)\&quot;  /s /i /Y" />

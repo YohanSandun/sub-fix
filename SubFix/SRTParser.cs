@@ -33,13 +33,17 @@ namespace SubFix
         }
 
         private int _index;
+        private int _line;
         private char _currentChar;
         private char[] _text;
+        private bool _hasError = false;
+        public string ErrorDetails { get; set; }
 
         public SRTParser(string fileName)
         {
             _index = -1;
-            _text = File.ReadAllText(fileName).ToCharArray();
+            _line = 1;
+            _text = File.ReadAllText(fileName).Replace("\r\n", "\n").ToCharArray();
             _advance();
         }
 
@@ -56,9 +60,12 @@ namespace SubFix
                 else
                 {
                     //Console.WriteLine("Error: ID expected!");
-                    return new SRTFile(segments);
+                    ErrorDetails = "Expected ID at line " + _line;
+                    return new SRTFile(true);
                 }
             }
+            if (_hasError)
+                return new SRTFile(true);
 
             return new SRTFile(segments);
         }
@@ -79,6 +86,8 @@ namespace SubFix
             if (_currentChar != '\n')
             {
                 //Console.WriteLine("Error : Expected new line after ID");
+                _hasError = true;
+                ErrorDetails = "Expected new line after ID at line " + _line;
                 return null;
             }
             _advance();
@@ -89,7 +98,6 @@ namespace SubFix
 
             // Parsing the content by just skipping until two new lines
             string content = _matchUntilDoubleNewLine();
-            _advance(2);
 
             return new SRTSegment(idsb.ToString(), content, time);
         }
@@ -105,6 +113,8 @@ namespace SubFix
                 if (_currentChar == '\0')
                 {
                     //Console.WriteLine("Expected new line after time");
+                    _hasError = true;
+                    ErrorDetails = "Expected new line after time at line " + _line;
                     return "";
                 }
             }
@@ -119,7 +129,14 @@ namespace SubFix
             while (_currentChar != '\0')
             {
                 if (_currentChar == '\n' && _peek() == '\n')
+                {
+                    _line += 2;
+                    _advance(2);
+                    while (_currentChar == '\n')
+                        _advance();
+
                     return sb.ToString();
+                }
 
                 sb.Append(_currentChar);
                 _advance();
@@ -138,6 +155,9 @@ namespace SubFix
 
         private void _advance(int num = 1)
         {
+            if (_currentChar == '\n')
+                _line++;
+
             _index += num;
             if (_index < _text.Length)
                 _currentChar = _text[_index];
@@ -149,17 +169,24 @@ namespace SubFix
     public class SRTFile
     {
         public List<SRTParser.SRTSegment> Segments { get; set; }
+        public bool HasError { get; } = false;
 
         public SRTFile(List<SRTParser.SRTSegment> segments)
         {
             Segments = segments;
         }
 
+        public SRTFile(bool error)
+        {
+            HasError = error;
+            Segments = new List<SRTParser.SRTSegment>();
+        }
+
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
             foreach (SRTParser.SRTSegment segment in Segments)
-                sb.Append(segment);
+                sb.Append(segment.ToString());
             return sb.ToString();
         }
     }

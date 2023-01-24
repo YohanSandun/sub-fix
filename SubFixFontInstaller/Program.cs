@@ -3,6 +3,7 @@
 try
 {
     FontInstaller.RegisterFont("UN-Bindumathi.ttf");
+    Console.WriteLine("Done");
 }
 catch (Exception ex)
 {
