@@ -224,8 +224,6 @@ namespace SubFix
             {
                 switchState(State.Progress);
                 fixSubtitles();
-                //SRTFile f = SRTParser.Parse(@"E:\TVSeries\1899\1899 (2022) S01E01 Sinhala Subtitles\1899.S01E01.1080p.NF.WEB-DL.DUAL.DDP5.1.Atmos.H.264-SMURF.Cineru.srt");
-                //MessageBox.Show(f.Segments.Count.ToString());
             }
         }
 
@@ -245,10 +243,11 @@ namespace SubFix
 
                 lstLog.Items.Add("Fixing... : " + _inputFiles[i].Name);
                 SRTParser parser = new SRTParser(_inputFiles[i].FullName);
+                string fontName = rbIskoolaPota.Checked ? "Iskoola Pota" : "UN-Bindumathi";
 
                 OutputFile ofile = new OutputFile(
                         _inputFiles[i].FullName, _inputFiles[i].Name,
-                        _rulesContext.ApplyRules(parser.Parse()).ToString());
+                        _rulesContext.ApplyRules(new FontAddRuleConfiguration(fontName), parser.Parse()).ToString());
                 lstLog.Items.Add("Fixed : " + _inputFiles[i].Name);
                 lstLog.Items.Add("Saving... : " + _inputFiles[i].Name);
 
@@ -327,6 +326,11 @@ namespace SubFix
             {
                 MessageBox.Show("Error while installing the font!\n\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void chkFix_CheckedChanged(object sender, EventArgs e)
+        {
+            grpFont.Enabled = chkFix.Checked;
         }
     }
 }

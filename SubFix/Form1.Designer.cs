@@ -44,7 +44,7 @@
             this.pInput = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pOptions = new System.Windows.Forms.Panel();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.grpFont = new System.Windows.Forms.GroupBox();
             this.lblInstallFont = new System.Windows.Forms.LinkLabel();
             this.rbIskoolaPota = new System.Windows.Forms.RadioButton();
             this.rbBindumathi = new System.Windows.Forms.RadioButton();
@@ -76,7 +76,7 @@
             this.pInput.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.pOptions.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.grpFont.SuspendLayout();
             this.pInputFiles.SuspendLayout();
             this.pProgress.SuspendLayout();
             this.pOutput.SuspendLayout();
@@ -197,7 +197,7 @@
             // 
             // pOptions
             // 
-            this.pOptions.Controls.Add(this.groupBox1);
+            this.pOptions.Controls.Add(this.grpFont);
             this.pOptions.Controls.Add(this.horizontalLine3);
             this.pOptions.Controls.Add(this.chkRemoveCopyright);
             this.pOptions.Controls.Add(this.chkFix);
@@ -207,17 +207,17 @@
             this.pOptions.Size = new System.Drawing.Size(666, 345);
             this.pOptions.TabIndex = 10;
             // 
-            // groupBox1
+            // grpFont
             // 
-            this.groupBox1.Controls.Add(this.lblInstallFont);
-            this.groupBox1.Controls.Add(this.rbIskoolaPota);
-            this.groupBox1.Controls.Add(this.rbBindumathi);
-            this.groupBox1.Location = new System.Drawing.Point(79, 96);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(430, 102);
-            this.groupBox1.TabIndex = 6;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Font";
+            this.grpFont.Controls.Add(this.lblInstallFont);
+            this.grpFont.Controls.Add(this.rbIskoolaPota);
+            this.grpFont.Controls.Add(this.rbBindumathi);
+            this.grpFont.Location = new System.Drawing.Point(79, 96);
+            this.grpFont.Name = "grpFont";
+            this.grpFont.Size = new System.Drawing.Size(430, 102);
+            this.grpFont.TabIndex = 6;
+            this.grpFont.TabStop = false;
+            this.grpFont.Text = "Font";
             // 
             // lblInstallFont
             // 
@@ -283,6 +283,7 @@
             this.chkFix.TabIndex = 1;
             this.chkFix.Text = "Fix Sinhala unicode";
             this.chkFix.UseVisualStyleBackColor = true;
+            this.chkFix.CheckedChanged += new System.EventHandler(this.chkFix_CheckedChanged);
             // 
             // label2
             // 
@@ -508,8 +509,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.pOptions.ResumeLayout(false);
             this.pOptions.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.grpFont.ResumeLayout(false);
+            this.grpFont.PerformLayout();
             this.pInputFiles.ResumeLayout(false);
             this.pInputFiles.PerformLayout();
             this.pProgress.ResumeLayout(false);
@@ -561,7 +562,7 @@
         private ListBox lstLog;
         private ProgressBar pb;
         private Label label6;
-        private GroupBox groupBox1;
+        private GroupBox grpFont;
         private LinkLabel lblInstallFont;
         private RadioButton rbIskoolaPota;
         private RadioButton rbBindumathi;

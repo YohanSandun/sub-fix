@@ -10,12 +10,10 @@
             _rules.Add(rule);
         }
 
-        public SRTFile ApplyRules(SRTFile file)
+        public SRTFile ApplyRules(RuleConfiguration config, SRTFile file)
         {
             for (int i = 0; i < _rules.Count; i++)
-            {
-                file = _rules[i].Apply(file);
-            }
+                file = _rules[i].Apply(config, file);
             return file;
         }
 

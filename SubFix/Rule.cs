@@ -2,6 +2,6 @@
 {
     internal interface Rule
     {
-        SRTFile Apply(SRTFile file);
+        SRTFile Apply(RuleConfiguration config, SRTFile file);
     }
 }
