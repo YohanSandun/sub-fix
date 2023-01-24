@@ -1,5 +1,4 @@
 ﻿using System.Text;
-using System.Text.RegularExpressions;
 
 namespace SubFix
 {
@@ -44,7 +43,7 @@ namespace SubFix
             _advance();
         }
 
-        public List<SRTSegment> Parse()
+        public SRTFile Parse()
         {
             List<SRTSegment> segments = new List<SRTSegment>();
 
@@ -57,11 +56,11 @@ namespace SubFix
                 else
                 {
                     //Console.WriteLine("Error: ID expected!");
-                    return segments;
+                    return new SRTFile(segments);
                 }
             }
 
-            return segments;
+            return new SRTFile(segments);
         }
 
         private SRTSegment _parseSegment()

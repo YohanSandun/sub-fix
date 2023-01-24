@@ -242,9 +242,11 @@ namespace SubFix
                 }
 
                 lstLog.Items.Add("Fixing... : " + _inputFiles[i].Name);
+                SRTParser parser = new SRTParser(_inputFiles[i].FullName);
+
                 OutputFile ofile = new OutputFile(
                         _inputFiles[i].FullName, _inputFiles[i].Name,
-                        _rulesContext.ApplyRules(SRTParser.Parse(_inputFiles[i].FullName)).ToString());
+                        _rulesContext.ApplyRules(parser.Parse()).ToString());
                 lstLog.Items.Add("Fixed : " + _inputFiles[i].Name);
                 lstLog.Items.Add("Saving... : " + _inputFiles[i].Name);
 
