@@ -6,6 +6,21 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <BaseOutputPath>bin\</BaseOutputPath>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="UN-Bindumathi.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="UN-Bindumathi.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="xcopy &quot;$(TargetDir)*&quot; &quot;$(SolutionDir)bin\$(Configuration)\&quot;  /s /i /Y" />
+  </Target>
 
 </Project>

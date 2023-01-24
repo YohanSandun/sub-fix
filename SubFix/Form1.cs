@@ -1,3 +1,5 @@
+using System.Diagnostics;
+
 namespace SubFix
 {
     public partial class frmMain : Form
@@ -262,7 +264,7 @@ namespace SubFix
             }
             pb.Value = pb.Maximum;
             MessageBox.Show("Successfully fixed file(s)", "Done", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-            pb.Value = 0;
+            Application.Exit();
         }
 
         private void btnAddFolder_Click(object sender, EventArgs e)
@@ -309,6 +311,21 @@ namespace SubFix
             {
                 if (MessageBox.Show("Are you sure want to cancel?", "Cancel", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                     Application.Exit();
+            }
+        }
+
+        private void lblInstallFont_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            try
+            {
+                Process proc = new Process();
+                proc.StartInfo.FileName = "SubFixFontInstaller.exe";
+                proc.StartInfo.UseShellExecute = true;
+                proc.StartInfo.Verb = "runas";
+                proc.Start();
+            } catch (Exception ex)
+            {
+                MessageBox.Show("Error while installing the font!\n\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

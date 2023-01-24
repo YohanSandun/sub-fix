@@ -4,8 +4,9 @@
     {
         public SRTFile Apply(SRTFile file)
         {
+            //Iskoola Pota
             foreach (SRTParser.SRTSegment segment in file.Segments)
-                segment.Content = "<font face=\"Iskoola Pota\">" + segment.Content + "</font>";
+                segment.Content = "<font face=\"UN-Bindumathi\">" + segment.Content + "</font>";
             return file;
         }
     }

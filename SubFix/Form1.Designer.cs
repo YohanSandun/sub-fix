@@ -43,6 +43,22 @@
             this.btnBack = new System.Windows.Forms.Button();
             this.pInput = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pOptions = new System.Windows.Forms.Panel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblInstallFont = new System.Windows.Forms.LinkLabel();
+            this.rbIskoolaPota = new System.Windows.Forms.RadioButton();
+            this.rbBindumathi = new System.Windows.Forms.RadioButton();
+            this.horizontalLine3 = new SubFix.HorizontalLine();
+            this.chkRemoveCopyright = new System.Windows.Forms.CheckBox();
+            this.chkFix = new System.Windows.Forms.CheckBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.pInputFiles = new System.Windows.Forms.Panel();
+            this.horizontalLine2 = new SubFix.HorizontalLine();
+            this.btnRemoveAll = new System.Windows.Forms.Button();
+            this.btnAddFiles = new System.Windows.Forms.Button();
+            this.btnAddFolder = new System.Windows.Forms.Button();
+            this.lstInput = new System.Windows.Forms.ListBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.pProgress = new System.Windows.Forms.Panel();
             this.lstLog = new System.Windows.Forms.ListBox();
             this.pb = new System.Windows.Forms.ProgressBar();
@@ -55,27 +71,16 @@
             this.rbChoose = new System.Windows.Forms.RadioButton();
             this.rbOverwrite = new System.Windows.Forms.RadioButton();
             this.label5 = new System.Windows.Forms.Label();
-            this.pOptions = new System.Windows.Forms.Panel();
-            this.horizontalLine3 = new SubFix.HorizontalLine();
-            this.chkRemoveCopyright = new System.Windows.Forms.CheckBox();
-            this.chkFix = new System.Windows.Forms.CheckBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.pInputFiles = new System.Windows.Forms.Panel();
-            this.horizontalLine2 = new SubFix.HorizontalLine();
-            this.btnRemoveAll = new System.Windows.Forms.Button();
-            this.btnAddFiles = new System.Windows.Forms.Button();
-            this.btnAddFolder = new System.Windows.Forms.Button();
-            this.lstInput = new System.Windows.Forms.ListBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.pWelcome.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pInput.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.pOptions.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.pInputFiles.SuspendLayout();
             this.pProgress.SuspendLayout();
             this.pOutput.SuspendLayout();
             this.grpOutput.SuspendLayout();
-            this.pOptions.SuspendLayout();
-            this.pInputFiles.SuspendLayout();
             this.SuspendLayout();
             // 
             // dlgOpen
@@ -170,10 +175,10 @@
             // 
             this.pInput.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.pInput.Controls.Add(this.pictureBox2);
-            this.pInput.Controls.Add(this.pProgress);
-            this.pInput.Controls.Add(this.pOutput);
             this.pInput.Controls.Add(this.pOptions);
             this.pInput.Controls.Add(this.pInputFiles);
+            this.pInput.Controls.Add(this.pProgress);
+            this.pInput.Controls.Add(this.pOutput);
             this.pInput.Dock = System.Windows.Forms.DockStyle.Top;
             this.pInput.Location = new System.Drawing.Point(0, 0);
             this.pInput.Name = "pInput";
@@ -189,6 +194,175 @@
             this.pictureBox2.Size = new System.Drawing.Size(666, 90);
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
+            // 
+            // pOptions
+            // 
+            this.pOptions.Controls.Add(this.groupBox1);
+            this.pOptions.Controls.Add(this.horizontalLine3);
+            this.pOptions.Controls.Add(this.chkRemoveCopyright);
+            this.pOptions.Controls.Add(this.chkFix);
+            this.pOptions.Controls.Add(this.label2);
+            this.pOptions.Location = new System.Drawing.Point(0, 90);
+            this.pOptions.Name = "pOptions";
+            this.pOptions.Size = new System.Drawing.Size(666, 345);
+            this.pOptions.TabIndex = 10;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.lblInstallFont);
+            this.groupBox1.Controls.Add(this.rbIskoolaPota);
+            this.groupBox1.Controls.Add(this.rbBindumathi);
+            this.groupBox1.Location = new System.Drawing.Point(79, 96);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(430, 102);
+            this.groupBox1.TabIndex = 6;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Font";
+            // 
+            // lblInstallFont
+            // 
+            this.lblInstallFont.AutoSize = true;
+            this.lblInstallFont.Location = new System.Drawing.Point(128, 62);
+            this.lblInstallFont.Name = "lblInstallFont";
+            this.lblInstallFont.Size = new System.Drawing.Size(81, 20);
+            this.lblInstallFont.TabIndex = 6;
+            this.lblInstallFont.TabStop = true;
+            this.lblInstallFont.Text = "Install Font";
+            this.lblInstallFont.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblInstallFont_LinkClicked);
+            // 
+            // rbIskoolaPota
+            // 
+            this.rbIskoolaPota.AutoSize = true;
+            this.rbIskoolaPota.Checked = true;
+            this.rbIskoolaPota.Location = new System.Drawing.Point(25, 26);
+            this.rbIskoolaPota.Name = "rbIskoolaPota";
+            this.rbIskoolaPota.Size = new System.Drawing.Size(110, 24);
+            this.rbIskoolaPota.TabIndex = 4;
+            this.rbIskoolaPota.TabStop = true;
+            this.rbIskoolaPota.Text = "Iskoola Pota";
+            this.rbIskoolaPota.UseVisualStyleBackColor = true;
+            // 
+            // rbBindumathi
+            // 
+            this.rbBindumathi.AutoSize = true;
+            this.rbBindumathi.Location = new System.Drawing.Point(25, 61);
+            this.rbBindumathi.Name = "rbBindumathi";
+            this.rbBindumathi.Size = new System.Drawing.Size(106, 24);
+            this.rbBindumathi.TabIndex = 5;
+            this.rbBindumathi.Text = "Bindumathi";
+            this.rbBindumathi.UseVisualStyleBackColor = true;
+            // 
+            // horizontalLine3
+            // 
+            this.horizontalLine3.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.horizontalLine3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.horizontalLine3.Location = new System.Drawing.Point(0, 343);
+            this.horizontalLine3.Name = "horizontalLine3";
+            this.horizontalLine3.Size = new System.Drawing.Size(666, 2);
+            this.horizontalLine3.TabIndex = 3;
+            this.horizontalLine3.Text = "horizontalLine3";
+            // 
+            // chkRemoveCopyright
+            // 
+            this.chkRemoveCopyright.AutoSize = true;
+            this.chkRemoveCopyright.Location = new System.Drawing.Point(56, 207);
+            this.chkRemoveCopyright.Name = "chkRemoveCopyright";
+            this.chkRemoveCopyright.Size = new System.Drawing.Size(200, 24);
+            this.chkRemoveCopyright.TabIndex = 2;
+            this.chkRemoveCopyright.Text = "Remove copyright details";
+            this.chkRemoveCopyright.UseVisualStyleBackColor = true;
+            // 
+            // chkFix
+            // 
+            this.chkFix.AutoSize = true;
+            this.chkFix.Checked = true;
+            this.chkFix.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkFix.Location = new System.Drawing.Point(56, 66);
+            this.chkFix.Name = "chkFix";
+            this.chkFix.Size = new System.Drawing.Size(158, 24);
+            this.chkFix.TabIndex = 1;
+            this.chkFix.Text = "Fix Sinhala unicode";
+            this.chkFix.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(19, 23);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(324, 20);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Please choose one or more options to continue.";
+            // 
+            // pInputFiles
+            // 
+            this.pInputFiles.Controls.Add(this.horizontalLine2);
+            this.pInputFiles.Controls.Add(this.btnRemoveAll);
+            this.pInputFiles.Controls.Add(this.btnAddFiles);
+            this.pInputFiles.Controls.Add(this.btnAddFolder);
+            this.pInputFiles.Controls.Add(this.lstInput);
+            this.pInputFiles.Controls.Add(this.label1);
+            this.pInputFiles.Location = new System.Drawing.Point(0, 90);
+            this.pInputFiles.Name = "pInputFiles";
+            this.pInputFiles.Size = new System.Drawing.Size(666, 345);
+            this.pInputFiles.TabIndex = 1;
+            // 
+            // horizontalLine2
+            // 
+            this.horizontalLine2.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.horizontalLine2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.horizontalLine2.Location = new System.Drawing.Point(0, 343);
+            this.horizontalLine2.Name = "horizontalLine2";
+            this.horizontalLine2.Size = new System.Drawing.Size(666, 2);
+            this.horizontalLine2.TabIndex = 10;
+            this.horizontalLine2.Text = "horizontalLine2";
+            // 
+            // btnRemoveAll
+            // 
+            this.btnRemoveAll.Location = new System.Drawing.Point(530, 286);
+            this.btnRemoveAll.Name = "btnRemoveAll";
+            this.btnRemoveAll.Size = new System.Drawing.Size(109, 29);
+            this.btnRemoveAll.TabIndex = 9;
+            this.btnRemoveAll.Text = "Remove All";
+            this.btnRemoveAll.UseVisualStyleBackColor = true;
+            this.btnRemoveAll.Click += new System.EventHandler(this.btnRemoveAll_Click);
+            // 
+            // btnAddFiles
+            // 
+            this.btnAddFiles.Location = new System.Drawing.Point(530, 232);
+            this.btnAddFiles.Name = "btnAddFiles";
+            this.btnAddFiles.Size = new System.Drawing.Size(109, 29);
+            this.btnAddFiles.TabIndex = 8;
+            this.btnAddFiles.Text = "Add Files";
+            this.btnAddFiles.UseVisualStyleBackColor = true;
+            this.btnAddFiles.Click += new System.EventHandler(this.btnAddFiles_Click);
+            // 
+            // btnAddFolder
+            // 
+            this.btnAddFolder.Location = new System.Drawing.Point(530, 193);
+            this.btnAddFolder.Name = "btnAddFolder";
+            this.btnAddFolder.Size = new System.Drawing.Size(109, 29);
+            this.btnAddFolder.TabIndex = 7;
+            this.btnAddFolder.Text = "Add Folder";
+            this.btnAddFolder.UseVisualStyleBackColor = true;
+            this.btnAddFolder.Click += new System.EventHandler(this.btnAddFolder_Click);
+            // 
+            // lstInput
+            // 
+            this.lstInput.FormattingEnabled = true;
+            this.lstInput.ItemHeight = 20;
+            this.lstInput.Location = new System.Drawing.Point(23, 51);
+            this.lstInput.Name = "lstInput";
+            this.lstInput.Size = new System.Drawing.Size(486, 264);
+            this.lstInput.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(19, 23);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(76, 20);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Input Files";
             // 
             // pProgress
             // 
@@ -310,129 +484,6 @@
             this.label5.TabIndex = 0;
             this.label5.Text = "Please choose a location to save output files.";
             // 
-            // pOptions
-            // 
-            this.pOptions.Controls.Add(this.horizontalLine3);
-            this.pOptions.Controls.Add(this.chkRemoveCopyright);
-            this.pOptions.Controls.Add(this.chkFix);
-            this.pOptions.Controls.Add(this.label2);
-            this.pOptions.Location = new System.Drawing.Point(0, 90);
-            this.pOptions.Name = "pOptions";
-            this.pOptions.Size = new System.Drawing.Size(666, 345);
-            this.pOptions.TabIndex = 10;
-            // 
-            // horizontalLine3
-            // 
-            this.horizontalLine3.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.horizontalLine3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.horizontalLine3.Location = new System.Drawing.Point(0, 343);
-            this.horizontalLine3.Name = "horizontalLine3";
-            this.horizontalLine3.Size = new System.Drawing.Size(666, 2);
-            this.horizontalLine3.TabIndex = 3;
-            this.horizontalLine3.Text = "horizontalLine3";
-            // 
-            // chkRemoveCopyright
-            // 
-            this.chkRemoveCopyright.AutoSize = true;
-            this.chkRemoveCopyright.Location = new System.Drawing.Point(56, 105);
-            this.chkRemoveCopyright.Name = "chkRemoveCopyright";
-            this.chkRemoveCopyright.Size = new System.Drawing.Size(200, 24);
-            this.chkRemoveCopyright.TabIndex = 2;
-            this.chkRemoveCopyright.Text = "Remove copyright details";
-            this.chkRemoveCopyright.UseVisualStyleBackColor = true;
-            // 
-            // chkFix
-            // 
-            this.chkFix.AutoSize = true;
-            this.chkFix.Checked = true;
-            this.chkFix.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkFix.Location = new System.Drawing.Point(56, 66);
-            this.chkFix.Name = "chkFix";
-            this.chkFix.Size = new System.Drawing.Size(158, 24);
-            this.chkFix.TabIndex = 1;
-            this.chkFix.Text = "Fix Sinhala unicode";
-            this.chkFix.UseVisualStyleBackColor = true;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(19, 23);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(324, 20);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Please choose one or more options to continue.";
-            // 
-            // pInputFiles
-            // 
-            this.pInputFiles.Controls.Add(this.horizontalLine2);
-            this.pInputFiles.Controls.Add(this.btnRemoveAll);
-            this.pInputFiles.Controls.Add(this.btnAddFiles);
-            this.pInputFiles.Controls.Add(this.btnAddFolder);
-            this.pInputFiles.Controls.Add(this.lstInput);
-            this.pInputFiles.Controls.Add(this.label1);
-            this.pInputFiles.Location = new System.Drawing.Point(0, 90);
-            this.pInputFiles.Name = "pInputFiles";
-            this.pInputFiles.Size = new System.Drawing.Size(666, 345);
-            this.pInputFiles.TabIndex = 1;
-            // 
-            // horizontalLine2
-            // 
-            this.horizontalLine2.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.horizontalLine2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.horizontalLine2.Location = new System.Drawing.Point(0, 343);
-            this.horizontalLine2.Name = "horizontalLine2";
-            this.horizontalLine2.Size = new System.Drawing.Size(666, 2);
-            this.horizontalLine2.TabIndex = 10;
-            this.horizontalLine2.Text = "horizontalLine2";
-            // 
-            // btnRemoveAll
-            // 
-            this.btnRemoveAll.Location = new System.Drawing.Point(530, 286);
-            this.btnRemoveAll.Name = "btnRemoveAll";
-            this.btnRemoveAll.Size = new System.Drawing.Size(109, 29);
-            this.btnRemoveAll.TabIndex = 9;
-            this.btnRemoveAll.Text = "Remove All";
-            this.btnRemoveAll.UseVisualStyleBackColor = true;
-            this.btnRemoveAll.Click += new System.EventHandler(this.btnRemoveAll_Click);
-            // 
-            // btnAddFiles
-            // 
-            this.btnAddFiles.Location = new System.Drawing.Point(530, 232);
-            this.btnAddFiles.Name = "btnAddFiles";
-            this.btnAddFiles.Size = new System.Drawing.Size(109, 29);
-            this.btnAddFiles.TabIndex = 8;
-            this.btnAddFiles.Text = "Add Files";
-            this.btnAddFiles.UseVisualStyleBackColor = true;
-            this.btnAddFiles.Click += new System.EventHandler(this.btnAddFiles_Click);
-            // 
-            // btnAddFolder
-            // 
-            this.btnAddFolder.Location = new System.Drawing.Point(530, 193);
-            this.btnAddFolder.Name = "btnAddFolder";
-            this.btnAddFolder.Size = new System.Drawing.Size(109, 29);
-            this.btnAddFolder.TabIndex = 7;
-            this.btnAddFolder.Text = "Add Folder";
-            this.btnAddFolder.UseVisualStyleBackColor = true;
-            this.btnAddFolder.Click += new System.EventHandler(this.btnAddFolder_Click);
-            // 
-            // lstInput
-            // 
-            this.lstInput.FormattingEnabled = true;
-            this.lstInput.ItemHeight = 20;
-            this.lstInput.Location = new System.Drawing.Point(23, 51);
-            this.lstInput.Name = "lstInput";
-            this.lstInput.Size = new System.Drawing.Size(486, 264);
-            this.lstInput.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(19, 23);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(76, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Input Files";
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -455,16 +506,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pInput.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.pOptions.ResumeLayout(false);
+            this.pOptions.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.pInputFiles.ResumeLayout(false);
+            this.pInputFiles.PerformLayout();
             this.pProgress.ResumeLayout(false);
             this.pProgress.PerformLayout();
             this.pOutput.ResumeLayout(false);
             this.pOutput.PerformLayout();
             this.grpOutput.ResumeLayout(false);
             this.grpOutput.PerformLayout();
-            this.pOptions.ResumeLayout(false);
-            this.pOptions.PerformLayout();
-            this.pInputFiles.ResumeLayout(false);
-            this.pInputFiles.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -508,5 +561,9 @@
         private ListBox lstLog;
         private ProgressBar pb;
         private Label label6;
+        private GroupBox groupBox1;
+        private LinkLabel lblInstallFont;
+        private RadioButton rbIskoolaPota;
+        private RadioButton rbBindumathi;
     }
 }
