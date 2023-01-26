@@ -400,5 +400,10 @@ namespace SubFix
                 MessageBox.Show(file.Segments[0].ToString());
             }
         }
+
+        private void grpFont_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -12,6 +12,7 @@
     <Description>A tool for fixing unicode issues in .srt files on Windows 11</Description>
     <Copyright>YSK Soft</Copyright>
     <PackageProjectUrl>https://github.com/YohanSandun/sub-fix</PackageProjectUrl>
+    <ApplicationIcon>sf_logo.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -19,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="sf_logo.ico" />
     <Content Include="UN-Bindumathi.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
