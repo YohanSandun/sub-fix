@@ -13,6 +13,7 @@
     <Copyright>YSK Soft</Copyright>
     <PackageProjectUrl>https://github.com/YohanSandun/sub-fix</PackageProjectUrl>
     <ApplicationIcon>sf_logo.ico</ApplicationIcon>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>

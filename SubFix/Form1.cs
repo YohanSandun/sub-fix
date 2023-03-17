@@ -234,6 +234,8 @@ namespace SubFix
             {
                 pb.Value = 0;
                 pb.Maximum = _inputFiles.Count - 1;
+                bool foundErrors = false;
+
                 for (int i = 0; i < _inputFiles.Count; i++)
                 {
                     if (pendingCancel)
@@ -276,6 +278,7 @@ namespace SubFix
                     } else
                     {
                         lstLog.Items.Add(DateTime.Now.ToString("HH:mm:ss") + " Error : " + parser.ErrorDetails + " in " + _inputFiles[i].Name);
+                        foundErrors = true;
                     }
                     pb.Value = i;
                     lstLog.SelectedIndex = lstLog.Items.Count - 1;
@@ -283,8 +286,12 @@ namespace SubFix
                 }
                 pb.Value = pb.Maximum;
                 saveLog();
-                MessageBox.Show("Successfully fixed file(s)", "Done", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 
+                if (foundErrors)
+                    MessageBox.Show("Errors found. Some of the subtitles are not well formed.", "Done", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                else
+                    MessageBox.Show("Successfully fixed file(s)", "Done", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                
                 Application.Exit();
             } catch (Exception ex)
             {
@@ -302,7 +309,7 @@ namespace SubFix
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < lstLog.Items.Count; i++)
                 sb.AppendLine(lstLog.Items[i].ToString());
-            File.WriteAllText(log + "\\" + DateTime.Now.ToString("dd-MM-yyyy-HH-mm-ss.txt"), sb.ToString());
+            File.WriteAllText(log + "\\" + DateTime.Now.ToString("dd-MM-yyyy-HHmmss") + ".txt", sb.ToString());
         }
 
         private void btnAddFolder_Click(object sender, EventArgs e)
@@ -393,17 +400,17 @@ namespace SubFix
 
         private void button1_Click(object sender, EventArgs e)
         {
-            SRTParser parser = new SRTParser(@"E:\TVSeries\BLINDSPOT\S02\Bldst.S02E01\Blindspot S02E01-All HDTV copies.srt");
-            SRTFile file = parser.Parse();
-            if (!file.HasError)
-            {
-                MessageBox.Show(file.Segments[0].ToString());
-            }
+            
         }
 
         private void grpFont_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            
         }
     }
 }

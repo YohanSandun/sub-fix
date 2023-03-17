@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Diagnostics;
+using System.Text;
 
 namespace SubFix
 {
@@ -41,6 +42,7 @@ namespace SubFix
 
         public SRTParser(string fileName)
         {
+            ErrorDetails = "";
             _index = -1;
             _line = 1;
             _text = File.ReadAllText(fileName).Replace("\r\n", "\n").ToCharArray();
@@ -53,13 +55,15 @@ namespace SubFix
 
             while (_currentChar != '\0')
             {
+                skipNewLines();
+
                 if (_currentChar >= '0' && _currentChar <= '9')
                 {
                     segments.Add(_parseSegment());
                 }
                 else
                 {
-                    //Console.WriteLine("Error: ID expected!");
+                    Debug.WriteLine(segments[segments.Count-2].ID);
                     ErrorDetails = "Expected ID at line " + _line;
                     return new SRTFile(true);
                 }
@@ -122,6 +126,12 @@ namespace SubFix
             return sb.ToString();
         }
 
+        private void skipNewLines()
+        {
+            while (_currentChar == '\n' || _currentChar == ' ' || _currentChar == '\t')
+                _advance();
+        }
+
         private string _matchUntilDoubleNewLine()
         {
             StringBuilder sb = new StringBuilder();
@@ -155,7 +165,7 @@ namespace SubFix
 
         private void _advance(int num = 1)
         {
-            if (_currentChar == '\n')
+            if (_currentChar == '\n' && num == 1)
                 _line++;
 
             _index += num;
